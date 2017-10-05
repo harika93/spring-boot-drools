@@ -1,0 +1,18 @@
+package com.rule
+
+import com.karthik.drools.model.appli
+
+rule "score lessthan 500"
+	when 
+		productObject: appli(score <= 650)
+	then
+		productObject.setStatus("Application should be rejected");
+		productObject.setSucc(false);
+	end
+rule "score greaterthan 650"
+	when 
+		productObject: appli(score > 650)
+	then
+		productObject.setStatus("Application can be  Approved!");
+		productObject.setSucc(true);
+	end
